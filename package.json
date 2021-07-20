@@ -4,5 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "workspaces": ["packages/*"],
-  "private": true
+  "private": true,
+
+  "scripts": {"client": "yarn workspace client run start",
+              "server": "yarn workspace server run mon"
+  }
 }
+ 

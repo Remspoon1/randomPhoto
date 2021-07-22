@@ -2,28 +2,28 @@ import { Button, Col, Image } from "react-bootstrap"
 import React, { useState } from "react"
 
 
-async function getRandomPhoto(){
-  const response = await fetch("https://images-api.nasa.gov/search?q=hubble")
+async function getNewPhoto(endpoint){
+  const response = await fetch (`http://localhost:3001/${endpoint}`)
   const data = await response.json()
-  const photo = data.collection.items[70].links[0].href
-  console.log(photo)
-  // console.log(data.X-RateLimit-Remaining)
-  return photo
+  const photo = data.photo
+  return photo  
 }
 
 function App() {
     const [ pic , setPic] = useState("")
 
-async function handlePhoto(){
-      let newPic = await getRandomPhoto()
+async function handlePhoto(endpoint){
+      let newPic = await getNewPhoto(endpoint)
       setPic(newPic)
     }
 
   return (
     <div className="App">
       <p> Hello from Randomizer </p>
-      <p>Want a random Space Photo</p>
-      <Button onClick={handlePhoto}> Get Photo </Button>
+      <p>WHAT do you want a photo of...?</p>
+      <Button onClick={(e) => {handlePhoto("space")}}> SPACE</Button>
+      <Button onClick={(e) => {handlePhoto("superhero")}}> SUPERHERO</Button>
+      <Button onClick={(e) => {handlePhoto("cats")}}> CATS</Button>
       <Col>
       <Image src={pic} rounded />
       </Col>
@@ -32,3 +32,5 @@ async function handlePhoto(){
 }
 
 export default App;
+
+// `http://localhost:3001/superhero/${randomNum()}

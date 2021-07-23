@@ -24,8 +24,11 @@ async function handlePhoto(endpoint){
       <Button onClick={(e) => {handlePhoto("space")}}> SPACE</Button>
       <Button onClick={(e) => {handlePhoto("superhero")}}> SUPERHERO</Button>
       <Button onClick={(e) => {handlePhoto("cats")}}> CATS</Button>
+      <Button onClick={(e) => {handlePhoto("dogs")}}> DOGS</Button>
+      <Button onClick={(e) => {handlePhoto("wildlife")}}> WILDLIFE</Button>
+      <Button onClick={(e) => {handlePhoto("bugs")}}> BUGS</Button>
       <Col>
-      <Image src={pic} rounded />
+      <Image src={pic} width="500" height="500"/>
       </Col>
     </div>
   );
